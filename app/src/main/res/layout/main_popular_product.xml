@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_popular"
+    android:layout_width="250dp"
+    android:layout_height="100dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="9dp"
+    app:cardElevation="9dp"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/ProdPict_popular"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/ProdName_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ProdPict_popular"
+            android:padding="5dp"
+            android:text="Nama Produk"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ProdPrice_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/ProdPict_popular"
+            android:padding="5dp"
+            android:text="25000"
+            android:textColor="@color/ProdPrice"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ProdQuantity_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/ProdComm_popular"
+            android:drawableLeft="@drawable/ic_stock"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="5"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/ProdLove_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/ProdPict_popular"
+            android:drawableLeft="@drawable/ic_loves"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="5"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/ProdComm_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/ProdLove_popular"
+            android:drawableLeft="@drawable/ic_comment"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="5"
+            android:textColor="#000" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

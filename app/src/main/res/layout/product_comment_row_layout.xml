@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="9dp"
+    android:layout_marginBottom="5dp"
+    app:cardElevation="9dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/PProfilePicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:civ_border_color="@color/cardview_dark_background"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/PName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/PProfilePicture"
+            android:text="Yukimura Aoi"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/KDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/PProfilePicture"
+            android:text="2020-02-02" />
+
+        <View
+            android:id="@+id/comment_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@id/PProfilePicture"
+            android:background="@color/cardview_dark_background" />
+
+        <TextView
+            android:id="@+id/KMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment_view_1"
+            android:padding="10dp"
+            android:text="Ini adalah contoh komentar untuk produk nanti" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

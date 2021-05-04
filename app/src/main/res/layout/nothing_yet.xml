@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="100dp"
+    android:paddingBottom="100dp">
+
+    <TextView xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nothingPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:layout_gravity="center"
+        android:text="No Item's Yet"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"
+        tools:targetApi="m" />
+
+    <TextView
+        android:id="@+id/nothingSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:enabled="false"
+        android:text="There's no item :("
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
