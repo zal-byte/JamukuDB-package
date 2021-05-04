@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.qiva.jamuku.MainActivity;
 import com.qiva.jamuku.R;
 import com.qiva.jamuku.ViewproductActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,8 +72,9 @@ public class MainProductAdapter extends RecyclerView.Adapter<MainProductAdapter.
             holder.nothingSecondary.setText("There's no data :(");
             holder.nothingPrimary.setCompoundDrawablesWithIntrinsicBounds(null, activity.getResources().getDrawable(R.drawable.ic_error), null, null);
         } else {
-    
-            Glide.with(activity).load(server.img_product + data.get(position).ProdPict).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.ic_broken_image).into(holder.ProdPict);
+
+            Picasso.get().load(server.img_product + data.get(position).ProdPict).into(holder.ProdPict);
+//            Glide.with(activity).load(server.img_product + data.get(position).ProdPict).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.ic_broken_image).into(holder.ProdPict);
 
             holder.ProdName.setText(data.get(position).ProdName);
             holder.ProdQuantity.setText(data.get(position).ProdQuantity);

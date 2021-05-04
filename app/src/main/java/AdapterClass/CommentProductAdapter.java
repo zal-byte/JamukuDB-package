@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.qiva.jamuku.ProfileActivity;
 import com.qiva.jamuku.R;
 import com.qiva.jamuku.ViewproductActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,8 @@ public class CommentProductAdapter extends RecyclerView.Adapter<CommentProductAd
         holder.KDate.setText(data.get(position).KDate);
         holder.KMessage.setText(data.get(position).KMessage);
         holder.PName.setText(data.get(position).PName);
-        Glide.with(activity).load(server.img_profile + data.get(position).PProfilePicture).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.PProfilePicture);
+        Picasso.get().load(server.img_profile + data.get(position).PProfilePicture).into(holder.PProfilePicture);
+//        Glide.with(activity).load(server.img_profile + data.get(position).PProfilePicture).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.PProfilePicture);
         holder.PProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

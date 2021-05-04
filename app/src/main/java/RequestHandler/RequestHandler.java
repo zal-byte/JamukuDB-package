@@ -46,8 +46,8 @@ public class RequestHandler {
         URL url1 = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
         connection.setRequestMethod("POST");
-        connection.addRequestProperty("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
-        connection.addRequestProperty("Accept","*/*");
+//        connection.addRequestProperty("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+//        connection.addRequestProperty("Accept","*/*");
         connection.setReadTimeout(27000);
         connection.setConnectTimeout(27000);
         connection.setDoOutput(true);
