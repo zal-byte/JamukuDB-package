@@ -22,6 +22,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.qiva.jamuku.MainActivity;
 import com.qiva.jamuku.R;
 import com.qiva.jamuku.ViewproductActivity;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -60,7 +61,8 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.ProdQuantity.setText(data.get(position).ProdQuantity);
         holder.ProdComm.setText(data.get(position).ProdComm);
         holder.ProdLove.setText(data.get(position).ProdLove);
-        Glide.with(activity).load(server.img_product + data.get(position).ProdPict).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.ProdPict);
+        Picasso.get().load(server.img_product+data.get(position).ProdPict).into(holder.ProdPict);
+//        Glide.with(activity).load(server.img_product + data.get(position).ProdPict).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.ProdPict);
         holder.ProdPict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
