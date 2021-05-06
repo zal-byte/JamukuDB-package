@@ -30,7 +30,7 @@ public class Server {
         if(url != null){
             this.sign_ui = url+"/index.php";
             this.img_product = url+"/lib/img/produk/";
-            this.profile_request = url+"/";
+            this.profile_request = url+"/index.php";
             this.img_profile = url+"/lib/img/profilepengguna/";
             this.product_request = url+"/index.php";
         }else{

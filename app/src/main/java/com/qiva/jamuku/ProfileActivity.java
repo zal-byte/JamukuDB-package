@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONArray;
@@ -155,21 +156,25 @@ public class ProfileActivity extends AppCompatActivity {
             profile_btn_save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (getSession().equals("PAddress_edit")) {
-                        param.put("Name", "PAddress");
-                        param.put("Value", profile_edit_value.getText().toString());
-                        dialog.dismiss();
-                        saveProfileData();
-                    } else if (getSession().equals("PEmail_edit")) {
-                        param.put("Name", "PEmail");
-                        param.put("Value", profile_edit_value.getText().toString());
-                        dialog.dismiss();
-                        saveProfileData();
-                    } else if (getSession().equals("PPhone_edit")) {
-                        param.put("Name", "PPhone");
-                        param.put("Value", profile_edit_value.getText().toString());
-                        dialog.dismiss();
-                        saveProfileData();
+                    switch (getSession()) {
+                        case "PAddress_edit":
+                            param.put("Name", "PAddress");
+                            param.put("Value", profile_edit_value.getText().toString());
+                            dialog.dismiss();
+                            saveProfileData();
+                            break;
+                        case "PEmail_edit":
+                            param.put("Name", "PEmail");
+                            param.put("Value", profile_edit_value.getText().toString());
+                            dialog.dismiss();
+                            saveProfileData();
+                            break;
+                        case "PPhone_edit":
+                            param.put("Name", "PPhone");
+                            param.put("Value", profile_edit_value.getText().toString());
+                            dialog.dismiss();
+                            saveProfileData();
+                            break;
                     }
                     profile_edit_value.setText("");
                 }
@@ -276,6 +281,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void parseUpdatedProfileData(String json) throws JSONException {
+//        Toast.makeText(this, json, Toast.LENGTH_SHORT).show();
         Log.d("UploadImage", json);
         JSONObject jsonObject = new JSONObject(json);
         JSONArray jsonArray = jsonObject.getJSONArray("updateProfileData");
@@ -350,6 +356,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void setData(JSONObject object) throws JSONException {
+        authSession.change("profile_picture", object.getString("PProfilePicture"));
         PName.setText(object.getString("PName"));
         PEmail.setText(object.getString("PEmail"));
         PPhone.setText(object.getString("PPhone"));
@@ -359,7 +366,8 @@ public class ProfileActivity extends AppCompatActivity {
         m_phone = object.getString("PPhone");
         m_address = object.getString("PAddress");
         m_profile = object.getString("PProfilePicture");
-        Glide.with(ProfileActivity.this).load(server.img_profile + object.getString("PProfilePicture")).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).placeholder(R.drawable.ic_broken_image).into(PProfilePicture);
+        Picasso.get().load(server.img_profile + object.getString("PProfilePicture")).into(PProfilePicture);
+//        Glide.with(ProfileActivity.this).load(server.img_profile + object.getString("PProfilePicture")).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).placeholder(R.drawable.ic_broken_image).into(PProfilePicture);
         if(views.equals("View_As_Person")){
             //Update sharedpreferences user loged in
             authSession.change("name", object.getString("PName"));
@@ -380,22 +388,12 @@ public class ProfileActivity extends AppCompatActivity {
                 try{
                     InputStream inputStream = getContentResolver().openInputStream(imgUri);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    PProfilePicture.setImageBitmap(bitmap);
+                    PProfilePicture.setImageDrawable(getResources().getDrawable(R.drawable.ic_broken_image));
                     param.put("Name","ImageBase64");
-                    Log.d("BIT", BitmapToBase64(bitmap));
+                    param.put("Value",BitmapToBase64(bitmap));
+
                     saveProfileData();
-                    new AsyncTask<Void, Void, String>() {
-                        @Override
-                        protected String doInBackground(Void... voids) {
-                            param.put("Value",BitmapToBase64(bitmap));
-                            return null;
-                        }
-                        @Override
-                        protected void onPostExecute(String s){
-                            authSession.change("profile_picture",authSession.sharedPreferences.getString(authSession.username,"")+".jpg");
-                            saveProfileData();
-                        }
-                    }.execute();
+
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -404,7 +402,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     public String BitmapToBase64(Bitmap bitmap){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
         byte[] res = baos.toByteArray();
 
         return String.valueOf(Base64.encodeToString(res, Base64.DEFAULT));

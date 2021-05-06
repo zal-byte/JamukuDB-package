@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BuyActivity"></activity>
+        <activity android:name=".Payment"></activity>
+        <activity android:name=".BuyActivity" />
         <activity android:name=".ViewproductActivity" />
         <activity
             android:name=".ProfileActivity"
@@ -45,7 +46,8 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme" />
-        <service android:name="Services.BuyProductServices"/>
+
+        <service android:name="Services.BuyProductServices" />
     </application>
 
 </manifest>
